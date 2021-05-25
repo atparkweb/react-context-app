@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Add.css";
+
 function Add({ onAdd }) {
   let inputRef = React.useRef();
 
@@ -9,12 +11,14 @@ function Add({ onAdd }) {
   };
 
   return (
-    <div>
-      <label>
-        New Member:
-        <input type="text" ref={inputRef} />
+    <div className="Add">
+      <label className="Add-label">
+        <span className="Add-label-text">New Member:</span>
+        <input className="Add-input" type="text" ref={inputRef} />
       </label>
-      <button onClick={handleClick}>Add Member</button>
+      <button className="Add-button" onClick={handleClick}>
+        Add Member
+      </button>
     </div>
   );
 }

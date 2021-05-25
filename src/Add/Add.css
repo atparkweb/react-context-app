@@ -1,0 +1,13 @@
+.Add {
+  margin: 0.5rem 0 2rem;
+}
+
+.Add-label-text {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.Add-input {
+  display: block;
+}

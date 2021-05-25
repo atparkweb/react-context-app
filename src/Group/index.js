@@ -19,7 +19,10 @@ const GroupList = ({ list = [], total = 0 }) => {
 const GroupItem = ({ name, total, membersCount }) => {
   return (
     <li className="Group-item">
-      {name}: ¥ {Math.round(total / membersCount)}
+      <span className="Group-item-name">{name}:</span>
+      <span className="Group-item-price">
+        ¥ {Math.round(total / membersCount)}
+      </span>
     </li>
   );
 };

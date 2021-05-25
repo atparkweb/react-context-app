@@ -44,10 +44,14 @@ function App() {
 
   return (
     <div className="App">
-      <Add onAdd={handleAdd} />
-      <div>
-        Total: ¥<input onChange={handleChange} />
+      <div className="App-controls">
+        <Add onAdd={handleAdd} />
+        <div>
+          Total: ¥
+          <input style={{ "margin-left": "1rem" }} onChange={handleChange} />
+        </div>
       </div>
+      <hr />
       <GroupList list={members} total={total}></GroupList>
     </div>
   );

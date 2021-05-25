@@ -6,4 +6,13 @@
 
 .Group-item {
   margin: 0.5rem 0;
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.25rem;
+}
+.Group-item-name {
+  flex: 0 0 50%;
+}
+.Group-item-price {
+  flex: 0 0 50%;
 }
