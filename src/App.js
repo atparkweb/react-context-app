@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 import Add from "./Add";
 import { GroupList } from "./Group";
 
-import BillContext from "./BillContext";
+import TotalContext from "./TotalContext";
+import MembersContext from "./MembersContext";
 
 function App() {
   const [members, setMembers] = useState([]);
@@ -29,10 +30,6 @@ function App() {
     );
   };
 
-  const getPrice = React.useMemo(() => {
-    return Math.round(total / members.length);
-  }, [total, members]);
-
   return (
     <div className="App">
       <div className="App-controls">
@@ -43,9 +40,11 @@ function App() {
         </div>
       </div>
       <hr />
-      <BillContext.Provider value={Math.round(total / members.length)}>
-        <GroupList list={members}></GroupList>
-      </BillContext.Provider>
+      <TotalContext.Provider value={total}>
+        <MembersContext.Provider value={members}>
+          <GroupList list={members}></GroupList>
+        </MembersContext.Provider>
+      </TotalContext.Provider>
     </div>
   );
 }

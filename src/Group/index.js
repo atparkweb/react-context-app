@@ -1,7 +1,8 @@
 import React from "react";
 import "./Group.css";
 
-import BillContext from "../BillContext";
+import TotalContext from "../TotalContext";
+import MembersContext from "../MembersContext";
 
 const GroupList = ({ list = [] }) => {
   return (
@@ -14,15 +15,14 @@ const GroupList = ({ list = [] }) => {
 };
 
 const GroupItem = ({ name }) => {
+  const total = React.useContext(TotalContext);
+  const members = React.useContext(MembersContext);
+
   return (
-    <BillContext.Consumer>
-      {value => (
-        <li className="Group-item">
-          <span className="Group-item-name">{name}:</span>
-          <span className="Group-item-price">¥{value}</span>
-        </li>
-      )}
-    </BillContext.Consumer>
+    <li className="Group-item">
+      <span className="Group-item-name">{name}:</span>
+      <span className="Group-item-price">¥{total / members.length}</span>
+    </li>
   );
 };
 
