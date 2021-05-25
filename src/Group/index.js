@@ -1,17 +1,27 @@
 import React from "react";
+import "./Group.css";
 
-const GroupList = () => {
+const GroupList = ({ list = [], total = 0 }) => {
   return (
-    <ul>
-      <GroupItem></GroupItem>
-      <GroupItem></GroupItem>
-      <GroupItem></GroupItem>
+    <ul className="Group-list">
+      {list.map(item => (
+        <GroupItem
+          key={item.id}
+          name={item.name}
+          total={total}
+          membersCount={list.length || 1}
+        ></GroupItem>
+      ))}
     </ul>
   );
 };
 
-const GroupItem = () => {
-  return <li className="Group-item">Item</li>;
+const GroupItem = ({ name, total, membersCount }) => {
+  return (
+    <li className="Group-item">
+      {name}: ¥ {Math.round(total / membersCount)}
+    </li>
+  );
 };
 
 export default GroupList;
