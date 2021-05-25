@@ -1,8 +1,10 @@
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./App.css";
 
 import Add from "./Add";
 import { GroupList } from "./Group";
+
+import BillContext from "./BillContext";
 
 function App() {
   const [members, setMembers] = useState([]);
@@ -27,17 +29,23 @@ function App() {
     );
   };
 
+  const getPrice = React.useMemo(() => {
+    return Math.round(total / members.length);
+  }, [total, members]);
+
   return (
     <div className="App">
       <div className="App-controls">
         <Add onAdd={handleAdd} />
         <div>
           Total: ¥
-          <input style={{ "margin-left": "1rem" }} onChange={handleChange} />
+          <input style={{ marginLeft: "1rem" }} onChange={handleChange} />
         </div>
       </div>
       <hr />
-      <GroupList list={members} total={total}></GroupList>
+      <BillContext.Provider value={Math.round(total / members.length)}>
+        <GroupList list={members}></GroupList>
+      </BillContext.Provider>
     </div>
   );
 }
